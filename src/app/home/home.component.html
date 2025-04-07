@@ -1,0 +1,43 @@
+<div class="flex flex-col h-min-full w-full bg-white-50">
+  <div class="flex flex-col h-screen w-full">
+    
+    <header class="w-full flex flex-row text-white items-center justify-between p-4 lg:justify-between md:py-10 md:px-20">
+        <a
+          routerLink="/"
+          class=" text-2xl font-bold text-gray-900 block first-letter:text-sky-500"
+          >AAMP</a
+        >
+      <div class="hidden lg:inline-flex">
+        navbar
+      </div>
+      <div class="flex flex-row items-center justify-between">
+        <div *ngIf="!isAuthenticated" class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+          <a routerLink="/auth/register" class="bg-green-500 text-white px-4 md:px-5 py-2 rounded-full hover:bg-green-700 transition-transform transform hover:-translate-y-1 text-center">Registro</a>
+          <a routerLink="/auth/login" class="bg-blue-500 text-white px-4 md:px-5 py-2 rounded-full hover:bg-blue-700 transition-transform transform hover:-translate-y-1 text-center">Inicio de Sesion</a>
+        </div>
+        <div *ngIf="isAuthenticated">
+          <!-- <app-user-profile></app-user-profile> -->
+        </div>
+      </div>
+    </header>
+    <div class="h-full w-full flex flex-col items-center justify-start overflow-auto bg-cover bg-center bg-no-repeat  md:bg-contain md:bg-right lg:bg-no-repeat " style="background-image:url('../../assets/images/pregnant-woman.jpg');">
+      <div #hero class="flex flex-col h-full w-full items-center justify-end bg-gradient-to-b from-transparent  to-slate-900 lg:bg-none lg:justify-between" >
+        <div class="flex flex-col items-start justify-center pb-10 px-6 md:pb-20 max-w-screen-sm md:px-10 lg:pb-30 lg:pt-48 lg:justify-center">
+          <span class="text-base text-sky-50 pb-2 lg:text-xl lg:text-gray-600">Asistente de Apoyo para Madres Primerizas</span>
+          <span class="text-2xl font-extrabold text-sky-200 tracking-tight lg:text-gray-700 lg:text-3xl">Encuentra recursos, consejos y apoyo para el embarazo.</span>
+          
+          <p class="text-base text-sky-100 py-2 tracking-tight lg:pt-6 lg:text-gray-500 ">Nuestro equipo especializado en maternidad.</p>
+          <button
+            routerLink="/auth/login"
+            type="submit"
+            class="inline-flex items-center w-full justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 focus:outline-none hover:opacity-80 focus:opacity-80 md:w-auto"
+          >
+            <icon-arrow-forward class="w-5 h-5 mr-2"></icon-arrow-forward>
+            Acceder al Soporte
+          </button>
+        </div>
+        <app-footer class="text-sky-100 lg:text-gray-800"></app-footer>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="flex flex-col lg:flex-row min-h-screen m-auto">
+    <div class="w-full lg:w-4/5 relative text-white flex items-center justify-center py-5 px-10 lg:order-last bg-cover bg-center" style="background-image: url('assets/images/fondo-login.png')">
+        <div class="relative z-10 text-center">
+            <h2>Bienvenido a AAMP</h2>
+        </div>
+    </div>
+
+    <div class="w-full p-5 md:p-10 lg:bg-white p-10 flex flex-col justify-center items-center">
+        <div class="">
+            <a routerLink="/" class="flex flex-row items-center justify-start text-sm font-medium text-gray-700 hover:text-gray-900 mb-6 cursor-pointer">
+                <mat-icon class="mr-1 text-sm">arrow_back</mat-icon>
+                <label>Inicio</label>
+            </a>
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="w-full">
+  <a
+  routerLink="/"
+    class="text-3xl font-bold text-gray-900 mb-6 block first-letter:text-sky-500"
+    >AAMP</a
+  >
+  <h2 class="text-2xl font-bold leading-tight text-black">Crear una cuenta</h2>
+
+  <p class="mt-2 text-base text-gray-600">
+    ¿Ya te registraste?
+    <a routerLink="/auth/login" title=""
+      class="font-medium text-sky-600 transition-all duration-200 hover:text-sky-700 focus:text-sky-700 hover:underline">Inicia
+      Sesión</a>
+  </p>
+
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-8" >
+    <div class="space-y-5">
+      <div>
+        <label for="" class="text-base font-medium text-gray-900">
+          Email
+        </label>
+        <div class="flex flex-row mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <mat-icon>email</mat-icon>
+          </div>
+
+          <input type="text" formControlName="email" placeholder="Ingresa tu correo"
+            class="block w-96 py-4 ps-10 pe-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-l-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white caret-sky-600" />
+        </div>
+      </div>
+
+      <div>
+        <label for="user" class="text-base font-medium text-gray-900">
+          Nombre de usuario
+        </label>
+        <div class="flex flex-row mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <mat-icon>person</mat-icon>
+          </div>
+          <input type="text" formControlName="username" placeholder="Ingresa tu nombre de usuario"
+            class="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white caret-sky-600" />
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between items-center">
+          <label for="" class="text-base font-medium text-gray-900">
+            Contraseña
+          </label>
+        </div>
+        <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <mat-icon>lock</mat-icon>
+          </div>
+
+          <input type="password" formControlName="password" name="" id="" placeholder="Ingresa tu contraseña"
+            class="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white caret-sky-600"
+            required />
+        </div>
+
+        <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <mat-icon>lock</mat-icon>
+          </div>
+
+          <input type="password" formControlName="confirmPassword" name="" id="" placeholder="Confirma tu contraseña"
+            class="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white caret-sky-600"
+            required />
+        </div>
+      </div>
+
+      <div>
+        <label class="text-base font-medium text-gray-900">
+          Fecha Probable de Parto
+        </label>
+        <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <input type="date" formControlName="due_date" placeholder="Fecha de vencimiento"
+            class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" required/>
+        </div>
+      </div>
+      <div>
+        <label class="text-base font-medium text-gray-900">
+          Fecha de nacimiento del bebé
+        </label>
+        <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <input type="date" formControlName="baby_birth_date" placeholder="Fecha de nacimiento del bebé"
+            class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+        </div>
+      </div>
+      <div>
+        <label class="text-base font-medium text-gray-900">
+          Notas
+        </label>
+        <div class="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+          <textarea formControlName="notes" placeholder="Embarazo gemelar, seguimiento especial"
+            class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="terms" formControlName="acceptTerms"
+          class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+          required />
+        <label for="terms" class="text-sm font-medium text-gray-700 cursor-pointer">Acepto los términos y
+          condiciones</label>
+      </div>
+
+
+      <div>
+        <button [disabled]="!registerForm.valid" type="submit"
+          class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 focus:outline-none hover:opacity-80 focus:opacity-80">
+          Registrar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

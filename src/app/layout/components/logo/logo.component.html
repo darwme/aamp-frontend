@@ -1,0 +1,11 @@
+<div class="flex flex-row items-center justify-between bg-white">
+    <a
+        routerLink="/"
+        class="py-4 px-5 text-2xl font-bold text-gray-900 block first-letter:text-sky-500"
+        ><span>P</span>
+        <span [ngClass]="collapsed ? 'hidden':'auto'">roctie</span>
+    </a>
+    <button *ngIf="!mobileActive" class="sticky rounded-md border p-2 mr-[-20px] z-[999999999]" (click)="onToggleSidebar()">
+        <icon-carets-down class="rotate-90 text-gray-400 hover:rotate-45 text-sky-500 focus:rotate-45 text-sky-600 active:rotate-45 text-sky-600" />
+    </button>
+</div>

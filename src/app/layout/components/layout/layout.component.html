@@ -1,0 +1,31 @@
+@if(mobileActive){
+    <div *ngIf="mobileActive && !closeMenu && sidebarCollapsed" class="fixed bg-gray-900 inset-0 z-[9999999999]">
+        <p class="flex flex-row text-gray-300 items-center p-5 justify-end" (click)="onClose()">
+            <mat-icon>closed</mat-icon>
+        </p>
+        <app-nav-mobile (click)="onPageChange()" class="w-full h-full"></app-nav-mobile>
+    </div>
+}
+
+<div class="flex h-screen">
+    <aside class="hidden lg:block sticky top-0 left-0 h-screen bg-gray-900 z-[999999]">
+        <app-logo [collapsed]="sidebarCollapsed" (toggleSidebar)="toggleSidebar()" class="w-full"></app-logo>
+        <app-sidebar
+        [collapsed]="sidebarCollapsed"
+        (toggleSidebar)="toggleSidebar()"
+        [class.w-16]="sidebarCollapsed"
+        >
+        </app-sidebar>
+    </aside>
+  <main
+    class="flex flex-col w-full bg-sky-50 h-full"
+    >
+    <app-header (toggleSidebar)="toggleSidebar()" class="shadow-md z-[99999]"></app-header>
+    <div class="h-full flex flex-col items-start justify-between overflow-auto px-2 lg:px-4">
+        <div class="grow h-full w-full">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer class="grow-0"></app-footer>
+    </div>
+</main>
+</div>

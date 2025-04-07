@@ -1,0 +1,16 @@
+<div [ngClass]="!collapsed ? 'w-64' : 'w-18 items-center justify-center'"
+     class="h-auto flex flex-col transition-all ease-in-out duration-100 relative py-5">
+
+    <div 
+      class="flex flex-row px-5 items-center justify-start"
+      [ngClass]="collapsed ? 'hidden' : 'auto'"
+      >
+        <p 
+          class="text-xs text-slate-500 font-bold"
+          >MODULOS</p>
+    </div>
+  <app-menu
+    (itemSelected)="onClose()"
+    [collapsed]="collapsed"
+  ></app-menu>
+</div>

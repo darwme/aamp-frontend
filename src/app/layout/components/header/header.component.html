@@ -1,0 +1,11 @@
+
+<header class="h-16 flex flex-row items-center justify-start py-4  bg-white pl-2 pr-4 lg:px-20">
+  <button *ngIf="mobileActive" mat-icon-button (click)="onToggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="flex flex-row items-center justify-between w-full">
+    <app-breadcumb></app-breadcumb>
+    <app-user-profile></app-user-profile>
+  </div>
+
+</header>

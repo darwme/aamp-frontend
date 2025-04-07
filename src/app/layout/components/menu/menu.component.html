@@ -1,0 +1,40 @@
+<ul>
+  <li *ngFor="let item of menuItems" class="text-gray-400 font-semibold">
+    <a 
+      routerLink="{{interroute + item.link}}" 
+      routerLinkActive="bg-gray-800 text-sky-500 text-bold" 
+      class="flex flex-row justify-between" 
+      [ngClass]="collapsed ? 'p-1' : 'py-1 px-4'" 
+      (click)="item.children ? toggleSubMenu(item) : onMenuItemClick()"
+    >
+      <div class="flex items-center space-x-2 p-2 cursor-pointer">
+        <div class="flex items-center justify-center p-2 bg-gray-800 rounded-md active:bg-gray-800">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </div>
+        <span [ngClass]="collapsed ? 'hidden' : 'auto'">{{ item.title }}</span>
+      </div>
+      <div *ngIf="item.children" [ngClass]="collapsed ? 'hidden' : 'auto'">
+        <mat-icon class="ml-auto">
+          {{ item.expanded ? 'expand_less' : 'expand_more' }}
+        </mat-icon>
+      </div>
+    </a>
+    <ul *ngIf="item.children && item.expanded" class="ml-4">
+      <li 
+        *ngFor="let child of item.children" 
+        class="flex items-center space-x-2 p-2 text-white" 
+        (click)="onMenuItemClick()"
+      >
+        <a 
+          [routerLink]="interroute + child.link" 
+          routerLinkActive="bg-gray-800" 
+          class="flex items-center space-x-2 p-2 text-white"
+        >
+          <mat-icon>{{ child.icon || 'chevron_right' }}</mat-icon>
+          <span>{{ child.title }}</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
