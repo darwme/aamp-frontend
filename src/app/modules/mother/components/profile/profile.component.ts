@@ -13,15 +13,32 @@ export class ProfileComponent implements OnInit {
   baby_birth_date: string = '';
   profileForm: FormGroup; // nuevo formulario reactivo
   userId: string = localStorage.getItem('userId') || '';
+  showAdditionalInfo: boolean = false;
+  additionalPanelVisible: boolean = false;
   constructor(
     private router: Router,
-    private fb: FormBuilder, private motherService: MotherService) {
+    private fb: FormBuilder, 
+    private motherService: MotherService
+  ) {
     this.profileForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       due_date: ['', Validators.required],
       baby_birth_date: ['', Validators.required],
-      notes: ['']
+      notes: [''],
+      // Nuevos campos opcionales
+      weight: [''],
+      height: [''],
+      blood_type: [''],
+      allergies: [''],
+      medical_history: [''],
+      fecha_nacimiento: [''],
+      semanas_gestacion: [null],
+      numero_de_hijos: [null],
+      tipo_embarazo: [''],
+      plan_parto: [''],
+      fecha_ultimo_control: [''],
+      mother_concept: ['']
     });
   }
 
@@ -58,7 +75,20 @@ export class ProfileComponent implements OnInit {
       email: formValue.email,
       due_date: formValue.due_date,
       baby_birth_date: formValue.baby_birth_date,
-      notes: formValue.notes
+      notes: formValue.notes,
+      // Nuevos campos opcionales
+      weight: formValue.weight,
+      height: formValue.height,
+      blood_type: formValue.blood_type,
+      allergies: formValue.allergies,
+      medical_history: formValue.medical_history,
+      fecha_nacimiento: formValue.fecha_nacimiento,
+      semanas_gestacion: formValue.semanas_gestacion,
+      numero_de_hijos: formValue.numero_de_hijos,
+      tipo_embarazo: formValue.tipo_embarazo,
+      plan_parto: formValue.plan_parto,
+      fecha_ultimo_control: formValue.fecha_ultimo_control,
+      mother_concept: formValue.mother_concept
     };
   }
 
@@ -72,5 +102,10 @@ export class ProfileComponent implements OnInit {
       });
 
     });
+  }
+
+  toggleAdditionalInfo(event: any): void {
+    this.showAdditionalInfo = event.target.value === 'yes';
+    this.additionalPanelVisible = this.showAdditionalInfo;
   }
 }

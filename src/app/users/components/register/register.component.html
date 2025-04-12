@@ -97,16 +97,99 @@
             class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" rows="3"></textarea>
         </div>
       </div>
-
-      <div class="flex items-center space-x-2">
-        <input type="checkbox" id="terms" formControlName="acceptTerms"
-          class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-          required />
-        <label for="terms" class="text-sm font-medium text-gray-700 cursor-pointer">Acepto los términos y
-          condiciones</label>
+      <!-- Sección para selección de información adicional -->
+      <div>
+        <label class="text-base font-medium text-gray-900">¿Deseas rellenar información adicional?</label>
+        <div class="flex items-center mt-2">
+          <label class="mr-4">
+            <input type="radio" name="additionalInfo" value="no" (change)="toggleAdditionalInfo($event)" checked>
+            <span class="ml-1">No</span>
+          </label>
+          <label>
+            <input type="radio" name="additionalInfo" value="yes" (change)="toggleAdditionalInfo($event)">
+            <span class="ml-1">Sí</span>
+          </label>
+        </div>
       </div>
-
-
+      <!-- Botón para desplegar/ocultar información adicional -->
+      <div *ngIf="showAdditionalInfo">
+        <button type="button" class="text-sky-600 underline" (click)="additionalPanelVisible = !additionalPanelVisible">
+          Información adicional
+        </button>
+      </div>
+      <!-- Panel desplegable de información adicional -->
+      <div *ngIf="showAdditionalInfo && additionalPanelVisible" class="border p-4 rounded-md">
+        <h3 class="text-lg font-medium mb-4">Información adicional</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-base font-medium text-gray-900">Peso</label>
+            <input type="number" step="0.01" formControlName="weight" placeholder="Peso"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Altura</label>
+            <input type="number" step="0.01" formControlName="height" placeholder="Altura"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Tipo de Sangre</label>
+            <input type="text" formControlName="blood_type" placeholder="Tipo de Sangre"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Alergias</label>
+            <textarea formControlName="allergies" placeholder="Alergias" rows="2"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"></textarea>
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Historial Médico</label>
+            <textarea formControlName="medical_history" placeholder="Historial Médico" rows="2"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"></textarea>
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Fecha de Nacimiento</label>
+            <input type="date" formControlName="fecha_nacimiento"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Semanas de Gestación</label>
+            <input type="number" formControlName="semanas_gestacion" placeholder="Semanas"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Número de Hijos</label>
+            <input type="number" formControlName="numero_de_hijos" placeholder="Cantidad"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Tipo de Embarazo</label>
+            <input type="text" formControlName="tipo_embarazo" placeholder="Tipo de Embarazo"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Plan de Parto</label>
+            <input type="text" formControlName="plan_parto" placeholder="Plan de Parto"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div>
+            <label class="text-base font-medium text-gray-900">Fecha Último Control</label>
+            <input type="date" formControlName="fecha_ultimo_control"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white" />
+          </div>
+          <div class="col-span-2">
+            <label class="text-base font-medium text-gray-900">Concepto de la Madre</label>
+            <textarea formControlName="mother_concept" placeholder="Concepto de la Madre" rows="3"
+              class="block w-full py-4 ps-3 pe-4 text-black transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Sección de términos y condiciones -->
+      <div class="flex items-center mt-4">
+        <input id="acceptTerms" type="checkbox" formControlName="acceptTerms" class="mr-2"/>
+        <label for="acceptTerms" class="text-base text-gray-900">
+          Acepto los términos y condiciones
+        </label>
+      </div>
       <div>
         <button [disabled]="!registerForm.valid" type="submit"
           class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 focus:outline-none hover:opacity-80 focus:opacity-80">

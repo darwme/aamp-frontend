@@ -14,7 +14,8 @@ export interface IAuthCredentials {
 
 export type LoginRequest = Pick<IUsuario, 'email' | 'username' | 'password'>;
 export type UpdatePasswordRequest = Pick<IUsuario, 'password'>;
-export type RegisterRequest = Pick<IUsuario, 'email' | 'username' | 'password' | 'due_date' | 'baby_birth_date' | 'notes'>;
+//export type RegisterRequest = Pick<IUsuario, 'email' | 'username' | 'password' | 'due_date' | 'baby_birth_date' | 'notes'>;
+export type RegisterRequest = Pick<IUsuario, 'email' | 'username' | 'password' | 'due_date' | 'baby_birth_date' | 'notes' | 'weight' | 'height' | 'blood_type' | 'allergies' | 'medical_history' | 'fecha_nacimiento' | 'semanas_gestacion' | 'numero_de_hijos' | 'tipo_embarazo' | 'plan_parto' | 'fecha_ultimo_control' | 'mother_concept'>;
 export type ForgotPasswordRequest = Pick<IUsuario, 'email'>;
 export type VerifyEmailRequest = Pick<IAuthCredentials, 'accessToken'>;
 

@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorMessage = '';
   hasError = false;
+  showAdditionalInfo: boolean = false;
+  additionalPanelVisible: boolean = false;
 
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
@@ -25,7 +27,19 @@ export class RegisterComponent implements OnInit {
       due_date: [''],
       baby_birth_date: [''],
       notes: [''],
-      acceptTerms: [false, Validators.requiredTrue]
+      acceptTerms: [false, Validators.requiredTrue],
+      weight: [null],
+      height: [null],
+      blood_type: [null],
+      allergies: [null],
+      medical_history: [null],
+      fecha_nacimiento: [null],
+      semanas_gestacion: [null],
+      numero_de_hijos: [null],
+      tipo_embarazo: [null],
+      plan_parto: [null],
+      fecha_ultimo_control: [null],
+      mother_concept: [null]
     });
   }
 
@@ -50,7 +64,20 @@ export class RegisterComponent implements OnInit {
       password: formValue.password,
       due_date: formValue.due_date,
       baby_birth_date: formValue.baby_birth_date,
-      notes: formValue.notes
+      notes: formValue.notes,
+      // Campos adicionales del perfil de la madre
+      weight: formValue.weight,
+      height: formValue.height,
+      blood_type: formValue.blood_type,
+      allergies: formValue.allergies,
+      medical_history: formValue.medical_history,
+      fecha_nacimiento: formValue.fecha_nacimiento,
+      semanas_gestacion: formValue.semanas_gestacion,
+      numero_de_hijos: formValue.numero_de_hijos,
+      tipo_embarazo: formValue.tipo_embarazo,
+      plan_parto: formValue.plan_parto,
+      fecha_ultimo_control: formValue.fecha_ultimo_control,
+      mother_concept: formValue.mother_concept
     }).subscribe(
       (response) => {
         this.onSuccess(response.message);
@@ -113,5 +140,10 @@ export class RegisterComponent implements OnInit {
       return { notSame: true };
     }
     return null;
+  }
+
+  toggleAdditionalInfo(event: any): void {
+    this.showAdditionalInfo = event.target.value === 'yes';
+    this.additionalPanelVisible = this.showAdditionalInfo; // abre el panel por defecto si se selecciona "Sí"
   }
 }
