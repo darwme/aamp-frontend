@@ -27,15 +27,15 @@
       <textarea formControlName="notes" class="mt-1 block w-full border rounded p-2"></textarea>
     </div>
     <!-- Selección de información adicional -->
-    <div class="mb-4">
-      <label class="block text-gray-700">¿Deseas rellenar información adicional?</label>
+    <div>
+      <label class="text-base font-medium text-gray-900">¿Deseas rellenar información adicional?</label>
       <div class="flex items-center mt-2">
         <label class="mr-4">
           <input type="radio" name="additionalInfo" value="no" (change)="toggleAdditionalInfo($event)" checked>
           <span class="ml-1">No</span>
         </label>
         <label>
-          <input type="radio radio" name="additionalInfo" value="yes" (change)="toggleAdditionalInfo($event)">
+          <input type="radio" name="additionalInfo" value="yes" (change)="toggleAdditionalInfo($event)">
           <span class="ml-1">Sí</span>
         </label>
       </div>
